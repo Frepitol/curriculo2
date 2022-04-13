@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+/*Aqui botamos uma fonte padrao caso link da linha 1 nao funcione*/
+    font-family: 'Poppins', sans-serif;
+    color: #2C3A40;                /*Cores das fontes*/
+}
+
+
+/* Header */
+
+.header-container {
+    /* ocupar 100% da largura */
+    height: 100vh;
+    width: 100vw;
+    background-color: #D9D8D7;
+    background-image: url('./Imagens/background_editado.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /*Alinhar no centro e no canto */
+    box-sizing: border-box; 
+    padding: 0 112px;
+    position: relative;
+
+
+}
+
+h1 { /*NOME EM TAMANHO GRANDE*/
+   font-size: 50px; /*tamano da fonte*/
+   text-transform: uppercase;
+   letter-spacing: 3px;
+   }
+
+h2 { /*DESCRIÇAO DA PROFISSAO (PROGRAMADOR)*/
+text-transform: uppercase;
+letter-spacing: 3px;
+}
+
+.social-media {
+margin-top: 1rem; /*Container que tem os links da redes*/
+display: flex; /*Pàra que os filhos delas sejam flex itens E ESTEJAM UM AO LADO DELE */
+}
+
+.social-media a {
+text-decoration: none;
+color: #011640;
+padding: 1rem 4rem;
+border: 1px solid #D98B48;
+min-width: 4rem;
+display: flex;
+/*Alinhando itens no centro */
+align-items: center;
+justify-content: center;
+transition: .5s ease-in-out;
+}
+
+
+a:hover{ /*Faz a o fade out dos links de redessociais*/
+background-color: #D97D48;
+}
+
+/*Menu hamburguer*/
+
+.checkbox-container {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.checkbox {
+height: 100px;
+width: 100px;
+position: absolute;
+right: 0;
+top: 0;
+display: flex;
+justify-content: center;
+cursor: pointer;
+z-index: 9999;
+transition: 400ms ease-in-out 0s;
+
+}
+
+.checkbox .trace{ /*traços menu hamburguer*/
+width: 50px;
+height: 2px;
+background-color: #D98B48;
+position: absolute;
+border-radius: 4px; /* para deixar bordas arredondas*/
+transition: 0.5s ease-in-out;
+
+}
+
+.checkbox .trace:nth-child(1) {
+top:26px;
+transform: rotate(0);
+
+}
+
+
+.checkbox .trace:nth-child(2) {
+    top:46px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(3) {
+    top:66px;
+    transform: rotate(0);
+    
+ }
+
+ 
+#toggle {
+    display: none;
+}  
+
+/*Menu bolha*/
+
+/*DIV VAZIA 1*/
+.menu {
+    position: absolute;
+    top:28px;
+    right: 30px;
+    background-color: transparent; /*nao vamos dar cor*/
+    height: 3px;
+    width: 10px;
+    border-radius: 50px; /* para ficar redondo */
+    box-shadow: 0px 0px 0px #ffffff; /*Sem cor na div e sim no box shadow*/
+    z-index: -1;
+    transition: 400ms ease-in-out 0s; /* 0 segundos de delay*/
+    }
+/* nao estara dentro da bubble e sim escondida no centro*/
+.menu-itens {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /*largura*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: 400ms ease-in-out 0s; /*igual o acima para aparecem juntos e dar a impressao que esta
+    um atras dos outro*/
+    } 
+
+.menu-itens ul {
+    list-style-type: none;
+}
+
+.menu-itens ul li a {
+    margin: 10px 0;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+/*Animnação do menu*/
+
+/*id do input: quando ele estiver checado eu vou pegar o 
+checkbox e o primeiro trace*/
+#toggle:checked + .checkbox .trace:nth-child(1) {
+transform: rotate(45deg);
+top: 47px;
+} 
+
+#toggle:checked + .checkbox .trace:nth-child(2){
+    transform: translate(-100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 48px;
+    }
+
+/* A partir daqui a animação do menu hamburguer já está funcionando */
+
+/*Vamos mecher com apenas duas propriedades para manipular o menu que irá abrir*/
+
+#toggle:checked + .checkbox {
+    background-color: #ffffff;
+}
+
+#toggle:checked ~ .menu {
+    box-shadow: 0px 0px 0px 100vmax #ffffff;
+    z-index: 1;
+}
+
+#toggle:checked~.menu-items {
+    visibility: visible;
+    opacity: 1;
+}                                  /*colocar a cor dos nossos itens la do menu (ERRO)*/
+
+.container {
+height: auto;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+margin: 3rem 0;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    margin: 3rem 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(217, 139, 72);
+    background-image: url('.Imagens\projeto.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: grayscale(0.5);
+    color: #1E1E2A;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.card-text {
+    width: 40%;
+    letter-spacing: 1px;
+    color: rgb(1, 22, 64);
+}
+
+.card-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;   
+}
+
+.card-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: block;
+    border: 1px solid #ffffff;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+
+}
+
+.card-wrapper h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.5s ease-in-out;
+
+}
+
+.card-wrapper p {
+    font-size: 0;
+    visibility: visible;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover {
+    filter: unset;
+}
+
+.card:hover > .card-wrapper::before {
+    height: 200px;
+    width: 200px;
+    opacity: 1;
+}
+
+.card:hover > .card-wrapper p {
+    opacity: 1;
+    visibility: visible;
+    font-size: 14px;
+}
+
+/*footer*/
+.footer{
+width: 100%;
+height: 100px;
+background-color: rgb(217, 216, 215);
+display: flex;
+align-items: center;
+justify-content: center;
+color: black;
+}
